@@ -1,0 +1,55 @@
+<div class="add-container">
+  <nav>
+    <h3>Thêm giao dịch</h3>
+  </nav>
+  <div class="form-container">
+    <form (submit)="type=='outcome'?addBill(form.value):addIncome(form.value)" #form="ngForm">
+      <div class="type">
+        <mat-radio-group ngModel name="type" required>
+          <mat-radio-button value="income" (click)="selectTags('income')">Thu</mat-radio-button>
+          <mat-radio-button value="outcome" (click)="selectTags('outcome')">Chi</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <mat-form-field class="input">
+        <mat-label>Số Tiền</mat-label>
+        <input matInput type="number" ngModel name="money" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="input">
+        <mat-label>Chọn Ngày</mat-label>
+        <input matInput [matDatepicker]="picker" ngModel name="date" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="input">
+        <mat-label>Chọn Ví</mat-label>
+        <mat-select ngModel name="wallet" required>
+          <mat-option *ngFor="let wallet of wallets" [value]="wallet.name">
+            {{wallet.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field class="input">
+        <mat-label>Chọn Mục</mat-label>
+        <mat-select ngModel name="tag" required>
+          <mat-option *ngFor="let tag of tags" [value]="tag">
+            {{tag}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+
+      <mat-form-field class="input">
+        <mat-label>Chú thích</mat-label>
+        <textarea matInput placeholder="Ex. It makes me feel..." ngModel name="note"></textarea>
+      </mat-form-field>
+      <div class="btn-container">
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Thêm</button>
+
+      </div>
+    </form>
+  </div>
+</div>

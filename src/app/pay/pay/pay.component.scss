@@ -1,0 +1,36 @@
+@import '../../shared/variables';
+
+.pay-container {
+
+  nav {
+    background: $backgroundColor;
+    color: $mainColor;
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  .income,
+  .outcome {
+    display: grid;
+    grid-template-areas: 'chart'
+      'data';
+
+    .income-data,
+    .outcome-data {
+      grid-area: data;
+    }
+
+    .income-chart,
+    .outcome-chart {
+      grid-area: chart;
+    }
+  }
+
+}
+
+
+@media only screen and (min-width: 600px) {
+  .pay-container {}
+}

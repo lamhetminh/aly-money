@@ -1,0 +1,46 @@
+<div class="pay-container">
+  <nav>
+    <h3>Giao dịch</h3>
+  </nav>
+  <mat-tab-group mat-stretch-tabs>
+    <mat-tab label="Thu">
+      <div class="income">
+        <div class="income-data">
+          <mat-accordion>
+            <mat-expansion-panel *ngFor="let income of incomeData">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{income.date | date}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  {{income.tag}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>{{income.money}}</p>
+              <p>{{income.note}}</p>
+
+            </mat-expansion-panel>
+
+          </mat-accordion>
+        </div>
+        <div class="income-chart">
+          <canvas baseChart [datasets]="incomeChartData" [labels]="incomeChartLabels" [options]="chartOptions"
+            [legend]="chartLegend" [chartType]="chartType" [colors]="chartColors"></canvas>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Chi">
+      <div class="outcome">
+        <div class="outcome-data">
+          <p>Hi</p>
+        </div>
+        <div class="outcome-chart">
+          <canvas baseChart [datasets]="outcomeChartData" [labels]="outcomeChartLabels" [options]="chartOptions"
+            [legend]="chartLegend" [chartType]="chartType" [colors]="chartColors"></canvas>
+        </div>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+
+</div>
